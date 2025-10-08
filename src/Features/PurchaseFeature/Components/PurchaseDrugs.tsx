@@ -49,7 +49,7 @@ function PurchaseDrugs({list, setListDrug}: {list: IDrugList[]; setListDrug: Rea
             <DialogHeader className='text-M-h2 text-center!'>دفع الحساب</DialogHeader>
             <DialogDescription></DialogDescription>
             <form className='flex flex-col gap-y-3'>
-              <CustomLabelAndIgnput label='الاجمالي' />
+              <CustomLabelAndInput label='الاجمالي' />
               <CustomLabelAndInput label='تم دفع' />
               <CustomLabelAndInput label='المتبقي' />
               <CustomButton className='max-w-70 w-full self-center'>دفع</CustomButton>
