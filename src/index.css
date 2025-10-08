@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: cairo;
+    src: url("./../public/Assets/Fonts/Cairo-VariableFont_slnt\,wght.ttf");
+}
+
+@theme {
+    --color-primary: #0D140D;
+    --color-second: #3CAA54;
+    /* Font Size */
+    --text-D-h1: 65px;
+    --text-D-h2: 55px;
+    --text-D-h3: 45px;
+    --text-D-h4: 35px;
+    --text-D-h5: 26px;
+    --text-D-p: 16px;
+
+    --text-M-h1: 38px;
+    --text-M-h2: 28px;
+    --text-M-h3: 20px;
+    --text-M-h4: 15px;
+    --text-M-h5: 13px;
+    --text-M-p: 13px;
+}
+
+html {
+    font-family: cairo;
+}
