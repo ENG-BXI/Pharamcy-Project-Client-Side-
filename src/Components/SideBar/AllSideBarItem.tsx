@@ -27,7 +27,7 @@ function AllSideBarItem() {
   return (
     <div className='flex flex-col gap-y-2'>
       {listOfItem.length > 0 && listOfItem.map(({title, path}, index) => <SideBarItem title={title} path={path} key={index} />)}
-      <SideBarItem title={"تسجيل الخروج"} path={''} />
+      <SideBarItem title={'تسجيل الخروج'} path={''} />
     </div>
   );
 }
