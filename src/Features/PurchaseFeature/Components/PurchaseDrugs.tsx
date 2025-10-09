@@ -2,12 +2,13 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/C
 import PopUpAddBuyDrug from '../Components/PopUpAddBuyDrug';
 import type {IDrugList} from '@/Types/DrugList';
 import PopupCheckout from './PopupCheckout';
+import SectionTitle from '@/Components/SectionTitle';
 
 function PurchaseDrugs({list, setListDrug}: {list: IDrugList[]; setListDrug: React.Dispatch<React.SetStateAction<IDrugList[]>>}) {
   const TotalPrice = list.reduce((acc, cu) => acc + cu.TotalPrice, 0);
   return (
     <div className='h-full flex flex-col'>
-      <div className='text-D-h4 font-semibold mb-5'>الرئيسية</div>
+      <SectionTitle title='الرئيسية'/>
       <Table>
         <TableHeader>
           <TableRow>
