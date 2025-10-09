@@ -1,10 +1,7 @@
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/Components/ShadCn/table';
 import PopUpAddBuyDrug from '../Components/PopUpAddBuyDrug';
 import type {IDrugList} from '@/Types/DrugList';
-import CustomButton from '@/Components/CustomButton';
-import {Dialog, DialogContent, DialogDescription, DialogHeader} from '@/Components/ShadCn/dialog';
-import {DialogTrigger} from '@radix-ui/react-dialog';
-import CustomLabelAndInput from '@/Components/CustomLabelAndInput';
+import PopupCheckout from './PopupCheckout';
 
 function PurchaseDrugs({list, setListDrug}: {list: IDrugList[]; setListDrug: React.Dispatch<React.SetStateAction<IDrugList[]>>}) {
   const TotalPrice = list.reduce((acc, cu) => acc + cu.TotalPrice, 0);
@@ -14,18 +11,18 @@ function PurchaseDrugs({list, setListDrug}: {list: IDrugList[]; setListDrug: Rea
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className='text-start! text-lg font-bold'>اسم الدواء</TableHead>
-            <TableHead className='text-start! text-lg font-bold'>صنف الدواء</TableHead>
-            <TableHead className='text-start! text-lg font-bold'>الدفعه</TableHead>
-            <TableHead className='text-start! text-lg font-bold'>سعر الحبة</TableHead>
-            <TableHead className='text-start! text-lg font-bold'>الكمية</TableHead>
-            <TableHead className='text-start! text-lg font-bold'>اجمالي السعر</TableHead>
-            <TableHead className='text-start! text-lg font-bold'></TableHead>
+            <TableHead className='text-start! font-bold'>اسم الدواء</TableHead>
+            <TableHead className='text-start! font-bold'>صنف الدواء</TableHead>
+            <TableHead className='text-start! font-bold'>الدفعه</TableHead>
+            <TableHead className='text-start! font-bold'>سعر الحبة</TableHead>
+            <TableHead className='text-start! font-bold'>الكمية</TableHead>
+            <TableHead className='text-start! font-bold'>اجمالي السعر</TableHead>
+            <TableHead className='text-start! not-only:font-bold'></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {list.map((item, index) => (
-            <TableRow className='text-lg' key={index}>
+            <TableRow className='' key={index}>
               <TableCell>{item.DrugName}</TableCell>
               <TableCell>{item.CategoryName}</TableCell>
               <TableCell>{item.BatchDate.toISOString().split('T')[0]}</TableCell>
@@ -41,21 +38,7 @@ function PurchaseDrugs({list, setListDrug}: {list: IDrugList[]; setListDrug: Rea
       </Table>
       <PopUpAddBuyDrug className={'self-center mt-5 mb-10'} setListDrug={setListDrug} />
       <div className='mt-auto mb-10 flex justify-between'>
-        <Dialog>
-          <DialogTrigger className='w-full max-w-70'>
-            <CustomButton className='w-full max-w-70'>دفع</CustomButton>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader className='text-M-h2 text-center!'>دفع الحساب</DialogHeader>
-            <DialogDescription></DialogDescription>
-            <form className='flex flex-col gap-y-3'>
-              <CustomLabelAndInput label='الاجمالي' />
-              <CustomLabelAndInput label='تم دفع' />
-              <CustomLabelAndInput label='المتبقي' />
-              <CustomButton className='max-w-70 w-full self-center'>دفع</CustomButton>
-            </form>
-          </DialogContent>
-        </Dialog>
+        <PopupCheckout />
         <div className='text-M-h3'>الاجمالي : {TotalPrice} ريال</div>
       </div>
     </div>
