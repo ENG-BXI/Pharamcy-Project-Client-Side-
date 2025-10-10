@@ -1,4 +1,7 @@
+import CustomButton from '@/Components/CustomButton';
+import CustomLabelAndInput from '@/Components/CustomLabelAndInput';
 import SectionTitle from '@/Components/SectionTitle';
+import {DialogContent, DialogDescription, DialogHeader, DialogTitle} from '@/Components/ShadCn/dialog';
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/Components/ShadCn/table';
 
 interface IBatch {
@@ -85,39 +88,42 @@ const OneDrugPage = () => {
     <section className='h-full'>
       <SectionTitle title='تفاصيل  Paracetamol 500mg' />
       <DrugInformation />
-      <SectionTitle title='كل الدفع للدواء Paracetamol 500mg' hasButton buttonText='اضافة دفعة' />
-      <div>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className='text-start!'>تاريخ الشراء</TableHead>
-              <TableHead className='text-start!'>تاريخ الانتاج</TableHead>
-              <TableHead className='text-start!'>تاريخ الانتهاء</TableHead>
-              <TableHead className='text-start!'>سعر الحبة</TableHead>
-              <TableHead className='text-start!'>الكمية</TableHead>
-              <TableHead className='text-start!'></TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {listOfBatch.length === 0 && <div>No Batch</div>}
-            {listOfBatch.length > 0 &&
-              listOfBatch.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell>{item.PaymentDate.toISOString().split('T')[0]}</TableCell>
-                  <TableCell>{item.CreateDate.toISOString().split('T')[0]}</TableCell>
-                  <TableCell>{item.EndDate.toISOString().split('T')[0]}</TableCell>
-                  <TableCell>{item.unitPrice}</TableCell>
-                  <TableCell>{item.count}</TableCell>
-                  <TableCell>X X</TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </div>
+      <SectionTitle title='كل الدفع للدواء Paracetamol 500mg' hasButton buttonText='اضافة دفعة' isButtonOpenDialog dialogContent={<AddNewBatchDialogContent />} />
+      <AllBatchForThisDrug />
     </section>
   );
 };
 
+function AllBatchForThisDrug() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead className='text-start!'>تاريخ الشراء</TableHead>
+          <TableHead className='text-start!'>تاريخ الانتاج</TableHead>
+          <TableHead className='text-start!'>تاريخ الانتهاء</TableHead>
+          <TableHead className='text-start!'>سعر الحبة</TableHead>
+          <TableHead className='text-start!'>الكمية</TableHead>
+          <TableHead className='text-start!'></TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {listOfBatch.length === 0 && <div>No Batch</div>}
+        {listOfBatch.length > 0 &&
+          listOfBatch.map((item, index) => (
+            <TableRow key={index}>
+              <TableCell>{item.PaymentDate.toISOString().split('T')[0]}</TableCell>
+              <TableCell>{item.CreateDate.toISOString().split('T')[0]}</TableCell>
+              <TableCell>{item.EndDate.toISOString().split('T')[0]}</TableCell>
+              <TableCell>{item.unitPrice}</TableCell>
+              <TableCell>{item.count}</TableCell>
+              <TableCell>X X</TableCell>
+            </TableRow>
+          ))}
+      </TableBody>
+    </Table>
+  );
+}
 function DrugInformation() {
   return (
     <div className='flex flex-col gap-y-3 mb-7'>
@@ -135,6 +141,24 @@ function DrugInformation() {
         <strong>اسم الشركة :</strong> <span>Pfizer</span>
       </div>
     </div>
+  );
+}
+function AddNewBatchDialogContent() {
+  return (
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle className='text-M-h2 text-center'>اضافة دفعة جديدة</DialogTitle>
+      </DialogHeader>
+      <DialogDescription></DialogDescription>
+      <div className='flex flex-col gap-y-3 '>
+        <CustomLabelAndInput label='تاريخ الشراء' />
+        <CustomLabelAndInput label='تاريخ الانتاج' />
+        <CustomLabelAndInput label='تاريخ الانتهاء' />
+        <CustomLabelAndInput label='سعر الحبة' />
+        <CustomLabelAndInput label='الكمية' />
+        <CustomButton className='self-center max-w-70 w-full'>اضافة</CustomButton>
+      </div>
+    </DialogContent>
   );
 }
 export default OneDrugPage;

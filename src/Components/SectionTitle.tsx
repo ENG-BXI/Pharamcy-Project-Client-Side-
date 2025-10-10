@@ -1,10 +1,35 @@
+import type {ReactNode} from 'react';
 import CustomButton from './CustomButton';
+import {Dialog, DialogTrigger} from './ShadCn/dialog';
 
-const SectionTitle = ({title, hasButton = false, buttonText}: {title: string; hasButton?: boolean; buttonText?: string}) => {
+interface ISectionTitle {
+  title: string;
+  hasButton?: boolean;
+  buttonText?: string;
+  onclick?: () => void;
+  isButtonOpenDialog?: boolean;
+  dialogContent?: ReactNode;
+}
+
+const SectionTitle = ({title, hasButton = false, buttonText, onclick, isButtonOpenDialog = false, dialogContent}: ISectionTitle) => {
   return (
     <div className='flex items-end justify-between mb-5'>
       <div className='text-D-h4 font-semibold '>{title}</div>
-      {hasButton && <CustomButton className=''>{buttonText}</CustomButton>}
+      {hasButton &&
+        (isButtonOpenDialog ? (
+          <Dialog>
+            <DialogTrigger>
+              <CustomButton className='' onclick={onclick}>
+                {buttonText}
+              </CustomButton>
+            </DialogTrigger>
+            {dialogContent}
+          </Dialog>
+        ) : (
+          <CustomButton className='' onclick={onclick}>
+            {buttonText}
+          </CustomButton>
+        ))}
     </div>
   );
 };
