@@ -5,6 +5,9 @@ import PurchaseFeature from '../Features/PurchaseFeature/Page';
 import InventoryFeature from '../Features/InventoryFeature/Page';
 import CompaniesFeature from '../Features/CompaniesFeature/Page';
 import OneDrugPage from '@/Features/InventoryFeature/Page/OneDrugPage';
+import OneCompany from '@/Features/CompaniesFeature/Page/OneCompany';
+import Contact from '@/Features/CompaniesFeature/Page/Contact';
+import BankAccount from '@/Features/CompaniesFeature/Page/BankAccount';
 const AllRoute = () => {
   return (
     <BrowserRouter>
@@ -15,6 +18,9 @@ const AllRoute = () => {
 
           <Route path='/inventory/drugs/:id' element={<OneDrugPage />} />
           <Route path='/companies' element={<CompaniesFeature />} />
+          <Route path='/companies/:id/drugs' element={<OneCompany />} />
+          <Route path='/companies/:id/contact' element={<Contact />} />
+          <Route path='/companies/:id/bank-account' element={<BankAccount />} />
         </Route>
         <Route path='*' element={<NotFount />} />
       </Routes>
