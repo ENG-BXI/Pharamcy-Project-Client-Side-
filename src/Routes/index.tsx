@@ -9,6 +9,7 @@ import OneCompany from '@/Features/CompaniesFeature/Page/OneCompany';
 import Contact from '@/Features/CompaniesFeature/Page/Contact';
 import BankAccount from '@/Features/CompaniesFeature/Page/BankAccount';
 import DeptForCompanies from '@/Features/DeptForCompaniesFeature/Pages';
+import DeptDetails from '@/Features/DeptForCompaniesFeature/Pages/DeptDetails';
 const AllRoute = () => {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ const AllRoute = () => {
           <Route path='/companies/:id/bank-account' element={<BankAccount />} />
           {/* Dept For Companies */}
           <Route path='/dept-for-companies' element={<DeptForCompanies />} />
+          <Route path='/dept-for-companies/:id/details' element={<DeptDetails />} />
         </Route>
         <Route path='*' element={<NotFount />} />
       </Routes>
