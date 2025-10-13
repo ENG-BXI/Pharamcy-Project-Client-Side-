@@ -17,11 +17,11 @@ function AllSideBarItem() {
     },
     {
       title: 'الديون للشركات',
-      path: ''
+      path: '/dept-for-companies'
     },
     {
       title: 'الديون للعملاء',
-      path: ''
+      path: '/dept-of-client'
     }
   ];
   return (
