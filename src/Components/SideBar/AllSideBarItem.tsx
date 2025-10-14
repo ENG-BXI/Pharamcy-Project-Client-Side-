@@ -12,6 +12,10 @@ function AllSideBarItem() {
       path: '/inventory'
     },
     {
+      title: 'المستخدمين',
+      path: '/users'
+    },
+    {
       title: 'الشركات',
       path: '/companies'
     },
