@@ -21,7 +21,7 @@ function AllSideBarItem() {
     },
     {
       title: 'الديون للعملاء',
-      path: '/dept-of-client'
+      path: '/dept-of-clients'
     }
   ];
   return (

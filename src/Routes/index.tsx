@@ -10,6 +10,9 @@ import Contact from '@/Features/CompaniesFeature/Page/Contact';
 import BankAccount from '@/Features/CompaniesFeature/Page/BankAccount';
 import DeptForCompanies from '@/Features/DeptForCompaniesFeature/Pages';
 import DeptDetails from '@/Features/DeptForCompaniesFeature/Pages/DeptDetails';
+import DeptOfClientsFeature from '@/Features/DeptOFClientsFeature/Pages';
+import ClientDeptDetails from '@/Features/DeptOFClientsFeature/Pages/ClientDeptDetails';
+import ClientPaymentDetailsOfDept from '@/Features/DeptOFClientsFeature/Pages/ClientPaymentDetailsOfDept';
 const AllRoute = () => {
   return (
     <BrowserRouter>
@@ -27,6 +30,10 @@ const AllRoute = () => {
           {/* Dept For Companies */}
           <Route path='/dept-for-companies' element={<DeptForCompanies />} />
           <Route path='/dept-for-companies/:id/details' element={<DeptDetails />} />
+          {/* Dept OF Clients */}
+          <Route path='/dept-of-clients' element={<DeptOfClientsFeature />} />
+          <Route path='/dept-of-clients/:id/details' element={<ClientDeptDetails />} />
+          <Route path='/dept-of-clients/:id/payment-details/:id_p' element={<ClientPaymentDetailsOfDept />} />
         </Route>
         <Route path='*' element={<NotFount />} />
       </Routes>
