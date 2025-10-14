@@ -13,6 +13,7 @@ import DeptDetails from '@/Features/DeptForCompaniesFeature/Pages/DeptDetails';
 import DeptOfClientsFeature from '@/Features/DeptOFClientsFeature/Pages';
 import ClientDeptDetails from '@/Features/DeptOFClientsFeature/Pages/ClientDeptDetails';
 import ClientPaymentDetailsOfDept from '@/Features/DeptOFClientsFeature/Pages/ClientPaymentDetailsOfDept';
+import Users from '@/Features/Users/Pages';
 const AllRoute = () => {
   return (
     <BrowserRouter>
@@ -20,8 +21,9 @@ const AllRoute = () => {
         <Route path='/' element={<Dashboard />}>
           <Route index element={<PurchaseFeature />} />
           <Route path='/inventory' element={<InventoryFeature />} />
-
           <Route path='/inventory/drugs/:id' element={<OneDrugPage />} />
+
+          <Route path='/users' element={<Users />} />
           {/* Companies */}
           <Route path='/companies' element={<CompaniesFeature />} />
           <Route path='/companies/:id/drugs' element={<OneCompany />} />
