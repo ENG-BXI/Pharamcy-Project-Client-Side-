@@ -1,8 +1,9 @@
-import type {ISideBatItem} from '../../Types/SIdeBarItem';
+import type {ISideBarItem, ISideBarItemWithSubItem} from '../../Types/SIdeBarItem';
 import SideBarItem from './SideBarItem';
+import SubSideBarItem from './SubSideBarItem';
 
 function AllSideBarItem() {
-  const listOfItem: ISideBatItem[] = [
+  const listOfItem: (ISideBarItem | ISideBarItemWithSubItem)[] = [
     {
       title: 'الرئيسية',
       path: '/'
@@ -13,7 +14,16 @@ function AllSideBarItem() {
     },
     {
       title: 'المخزون',
-      path: '/inventory'
+      SubSideBarItems: [
+        {
+          title: 'كل الادوية',
+          path: '/inventory'
+        },
+        {
+          title: 'المنتهي من الادوية',
+          path: '/inventory/expired-drugs'
+        }
+      ]
     },
     {
       title: 'المستخدمين',
@@ -34,7 +44,11 @@ function AllSideBarItem() {
   ];
   return (
     <div className='flex flex-col gap-y-2'>
-      {listOfItem.length > 0 && listOfItem.map(({title, path}, index) => <SideBarItem title={title} path={path} key={index} />)}
+      {listOfItem.length > 0 &&
+        listOfItem.map((item, index) => {
+          if ((item as ISideBarItemWithSubItem)?.SubSideBarItems) return <SubSideBarItem item={item as ISideBarItemWithSubItem} />;
+          else return <SideBarItem title={(item as ISideBarItem).title} path={(item as ISideBarItem).path} key={index} />;
+        })}
       <SideBarItem title={'تسجيل الخروج'} path={''} />
     </div>
   );
