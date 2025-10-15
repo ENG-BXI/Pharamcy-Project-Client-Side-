@@ -14,6 +14,7 @@ import DeptOfClientsFeature from '@/Features/DeptOFClientsFeature/Pages';
 import ClientDeptDetails from '@/Features/DeptOFClientsFeature/Pages/ClientDeptDetails';
 import ClientPaymentDetailsOfDept from '@/Features/DeptOFClientsFeature/Pages/ClientPaymentDetailsOfDept';
 import Users from '@/Features/Users/Pages';
+import PurchaseFeature from '@/Features/PurchaseFeature/Pages';
 const AllRoute = () => {
   return (
     <BrowserRouter>
@@ -23,7 +24,7 @@ const AllRoute = () => {
           <Route path='/inventory' element={<InventoryFeature />} />
           <Route path='/inventory/drugs/:id' element={<OneDrugPage />} />
           {/* Purchase */}
-          <Route path='/purchases' element={<InventoryFeature />} />
+          <Route path='/purchases' element={<PurchaseFeature />} />
           {/* Users */}
           <Route path='/users' element={<Users />} />
           {/* Companies */}

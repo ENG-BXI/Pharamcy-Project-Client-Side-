@@ -8,6 +8,10 @@ function AllSideBarItem() {
       path: '/'
     },
     {
+      title: 'المشتريات',
+      path: '/purchases'
+    },
+    {
       title: 'المخزون',
       path: '/inventory'
     },
