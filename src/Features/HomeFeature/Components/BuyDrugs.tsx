@@ -1,14 +1,14 @@
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/Components/ShadCn/table';
-import PopUpAddBuyDrug from '../Components/PopUpAddBuyDrug';
+import PopUpAddBuyDrug from './PopUpAddBuyDrug';
 import type {IDrugList} from '@/Types/DrugList';
 import PopupCheckout from './PopupCheckout';
 import SectionTitle from '@/Components/SectionTitle';
 
-function PurchaseDrugs({list, setListDrug}: {list: IDrugList[]; setListDrug: React.Dispatch<React.SetStateAction<IDrugList[]>>}) {
+function BuyDrugs({list, setListDrug}: {list: IDrugList[]; setListDrug: React.Dispatch<React.SetStateAction<IDrugList[]>>}) {
   const TotalPrice = list.reduce((acc, cu) => acc + cu.TotalPrice, 0);
   return (
     <div className='h-full flex flex-col'>
-      <SectionTitle title='الرئيسية'/>
+      <SectionTitle title='الرئيسية' />
       <Table>
         <TableHeader>
           <TableRow>
@@ -46,4 +46,4 @@ function PurchaseDrugs({list, setListDrug}: {list: IDrugList[]; setListDrug: Rea
   );
 }
 
-export default PurchaseDrugs;
+export default BuyDrugs;
